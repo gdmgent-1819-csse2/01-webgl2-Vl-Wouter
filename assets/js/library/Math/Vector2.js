@@ -1,7 +1,11 @@
+import Matrix2 from './Matrix2.js'
+/**
+ * Two dimensional Vector
+ */
 export default class Vector2 {
 
   /**
-   * Two dimensional vector
+   * Create a two dimensional vector
    * @param {Number} xpos 
    * @param {Number} ypos 
    */
@@ -46,5 +50,17 @@ export default class Vector2 {
   scalar(a) {
     this.x *= a
     this.y *= a
+  }
+
+  /**
+   * Rotate vector around origin
+   * @param {Number} α - Anticlockwise angle (degrees)
+   */
+  rot(α) {
+    const m = new Matrix2([this.x, 0, this.y, 0])
+    m.rot(α)
+    console.log(m)
+    this.x = m.items[0]
+    this.y = m.items[2]
   }
 }

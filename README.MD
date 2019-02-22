@@ -4,9 +4,10 @@
 
 ## Todo
 
-* [*] Vector2
-* [*] Vector3
-* [*] Vector4
-* [*] Matrix2
-* [*] Matrix3
-* [*] Matrix4
+- [x] Vector2
+- [x] Vector3
+- [x] Vector4
+- [x] Matrix2
+- [x] Matrix3
+- [x] Matrix4
+- [ ] Tests

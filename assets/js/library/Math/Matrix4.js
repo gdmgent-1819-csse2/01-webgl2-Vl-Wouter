@@ -2,7 +2,7 @@ export default class Matrix4 {
 
   /**
    * Four dimensional matrix
-   * @param {Number[]} items 
+   * @param {Number[]} items - Values of this matrix
    */
   constructor(items) {
     this.items = items || [
@@ -15,11 +15,10 @@ export default class Matrix4 {
 
   /**
    * Addition of two matrix
-   * @param {Matrix4} m_b 
+   * @param {Matrix4} b - Second matrix
    */
-  add(m_b) {
+  add(b) {
     const a = this.items
-    const b = m_b.items
     this.items = [
       (a[0] + b[0]), (a[1] + b[1]), (a[2] + b[2]), (a[3] + b[3]),
       (a[4] + b[4]), (a[5] + b[5]), (a[6] + b[6]), (a[7] + b[7]),
@@ -30,11 +29,11 @@ export default class Matrix4 {
 
   /**
    * Subtraction of two matrix
-   * @param {Matrix4} m_b 
+   * @param {Matrix4} b - Second matrix
    */
-  sub(m_b) {
+  sub(b) {
     const a = this.items
-    const b = m_b.items
+
     this.items = [
       (a[0] - b[0]), (a[1] - b[1]), (a[2] - b[2]), (a[3] - b[3]),
       (a[4] - b[4]), (a[5] - b[5]), (a[6] - b[6]), (a[7] - b[7]),
@@ -45,16 +44,15 @@ export default class Matrix4 {
 
   /**
    * Multiplication matrix
-   * @param {Matrix4} m_b 
+   * @param {Matrix4} b - Second matrix
    */
-  mul(m_b) {
+  mul(b) {
     const a = this.items
-    const b = m_b.items
 
     const res0_0 = (a[0] * b[0]) + (a[1] * b[4]) + (a[2] * b[8]) + (a[3] * b[12])
     const res0_1 = (a[0] * b[1]) + (a[1] * b[5]) + (a[2] * b[9]) + (a[3] * b[13])
-    const res0_2 = (a[0] * b[2]) + (a[1] * b[6]) + (a[2] * b[10]) + (a[3] + b[14])
-    const res0_3 = (a[0] * b[3]) + (a[1] * b[7]) + (a[2] * b[11]) + (a[3] + b[15])
+    const res0_2 = (a[0] * b[2]) + (a[1] * b[6]) + (a[2] * b[10]) + (a[3] * b[14])
+    const res0_3 = (a[0] * b[3]) + (a[1] * b[7]) + (a[2] * b[11]) + (a[3] * b[15])
 
     const res1_0 = (a[4] * b[0]) + (a[5] * b[4]) + (a[6] * b[8]) + (a[7] * b[12])
     const res1_1 = (a[4] * b[1]) + (a[5] * b[5]) + (a[6] * b[9]) + (a[7] * b[13])
@@ -77,5 +75,23 @@ export default class Matrix4 {
       res2_0, res2_1, res2_2, res2_3,
       res3_0, res3_1, res3_2, res3_3,
     ]
+  }
+
+  /**
+   * Rotate matrix around origin
+   * @param {Number} α - Anticlockwise angle (degrees) 
+   */
+  rot(α) {
+    α *= Math.PI / 180
+    const cos = Math.cos(α)
+    const sin = Math.sin(α)
+    const a = this.items
+    const r = [
+      cos, -sin, 0, 0,
+      sin, cos, 0, 0,
+      0, 0, 0, 0,
+      0, 0, 0, 0,
+    ]
+    this.mul(r)
   }
 }

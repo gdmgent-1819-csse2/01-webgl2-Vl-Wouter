@@ -2,7 +2,7 @@ export default class Matrix3 {
 
   /**
    * Three dimensional matrix
-   * @param {Number[]} items 
+   * @param {Number[]} items - Values of this matrix
    */
   constructor(items) {
     this.items = items || [
@@ -14,11 +14,10 @@ export default class Matrix3 {
 
   /**
    * Addition of two matrix
-   * @param {Matrix3} m_b 
+   * @param {Matrix3} b - Second matrix
    */
-  add(m_b) {
+  add(b) {
     const a = this.items
-    const b = m_b.items
     this.items = [
       (a[0] + b[0]), (a[1] + b[1]), (a[2] + b[2]),
       (a[3] + b[3]), (a[4] + b[4]), (a[5] + b[5]),
@@ -28,11 +27,10 @@ export default class Matrix3 {
 
   /**
    * Subtraction of two matrix
-   * @param {Matrix3} m_b 
+   * @param {Matrix3} b - Second matrix
    */
-  sub(m_b) {
+  sub(b) {
     const a = this.items
-    const b = m_b.items
     this.items = [
       (a[0] - b[0]), (a[1] - b[1]), (a[2] - b[2]),
       (a[3] - b[3]), (a[4] - b[4]), (a[5] - b[5]),
@@ -42,11 +40,10 @@ export default class Matrix3 {
 
   /**
    * Multiplication Matrix
-   * @param {Matrix3} m_b 
+   * @param {Matrix3} b - Second matrix
    */
-  mul(m_b) {
+  mul(b) {
     const a = this.items
-    const b = m_b.items
 
     const res0_0 = (a[0] * b[0]) + (a[1] * b[3]) + (a[2] * b[6])
     const res0_1 = (a[0] * b[1]) + (a[1] * b[4]) + (a[2] * b[7])
@@ -65,5 +62,18 @@ export default class Matrix3 {
       res1_0, res1_1, res1_2,
       res2_0, res2_1, res2_2,
     ]
+  }
+
+  rot(α) {
+    α *= Math.PI / 180
+    const cos = Math.cos(α)
+    const sin = Math.sin(α)
+    const a = this.items
+    const r = [
+      cos, -sin, 0,
+      sin, cos, 0,
+      0, 0, 0,
+    ]
+    this.mul(r)
   }
 }
