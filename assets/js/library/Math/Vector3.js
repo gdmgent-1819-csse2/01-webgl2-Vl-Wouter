@@ -73,8 +73,8 @@ export default class Vector3 {
     ])
     m.rot(α)
     console.log(m)
-    this.x = m.elements[0]
-    this.y = m.elements[3]
-    this.z = m.elements[6]
+    this.x = m.items[0]
+    this.y = m.items[3]
+    this.z = m.items[6]
   }
 }

@@ -21,6 +21,10 @@ export default class Vector2 {
     return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2))
   }
 
+  /**
+   * Dot product of two vectors
+   * @param {Vector2} v - Second vector
+   */
   dot(v) {
     return (this.x * v.x) + (this.y * v.y)
   }

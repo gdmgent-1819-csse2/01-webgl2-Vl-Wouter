@@ -10,4 +10,4 @@
 - [x] Matrix2
 - [x] Matrix3
 - [x] Matrix4
-- [ ] Tests
+- [x] Tests for all classes
