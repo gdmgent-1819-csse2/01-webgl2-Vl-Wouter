@@ -1,15 +1,15 @@
 #version 300 es
+// @see https://www.khronos.org/registry/OpenGL-Refpages/es3.0/
 
+/** Attributes */
 in vec4 a_VertexPosition;
 in vec4 a_VertexColor;
 
-out vec4 v_color
-
-// out vec4 v_color
+/** Varyings */
+out vec4 v_Color;
 
 void main() {
-  gl_Position = a_VertexPosition;
-  gl_PointSize = 10.0;
-
-  v_color = a_VertexColor
+    gl_Position = a_VertexPosition; // @see https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/gl_Position.xhtml
+    gl_PointSize = 5.0;             // @see https://www.khronos.org/registry/OpenGL-Refpages/es3.0/html/gl_PointSize.xhtml
+    v_Color = a_VertexColor;
 }

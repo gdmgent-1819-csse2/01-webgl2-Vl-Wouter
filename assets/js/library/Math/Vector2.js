@@ -1,70 +1,69 @@
 import Matrix2 from './Matrix2.js'
-/**
- * Two dimensional Vector
- */
+
+/** Class representing a two-dimensional vector. */
 export default class Vector2 {
+    /**
+     * Create a vector.
+     * @param {Number} x - The horizontal vector component.
+     * @param {Number} y - The vertical vector component.
+     */
+    constructor(x, y) {
+        this.x = Number(x) || 0
+        this.y = Number(y) || 0
+    }
 
-  /**
-   * Create a two dimensional vector
-   * @param {Number} xpos 
-   * @param {Number} ypos 
-   */
-  constructor(xpos, ypos) {
-    this.x = Number(xpos) || 0
-    this.y = Number(ypos) || 0
-  }
+    /**
+     * Calculate the length of the vector.
+     * @return {Number} The length of the vector
+     */
+    norm() {
+        return Math.sqrt(this.x ** 2 + this.y ** 2)
+    }
 
-  /**
-   * Length of the vector
-   */
-  norm() {
-    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2))
-  }
+    /**
+     * Addition of a vector to the current vector.
+     * @param {Vector2} v - The second vector.
+     */
+    add(v) {
+        this.x += v.x
+        this.y += v.y
+    }
 
-  /**
-   * Dot product of two vectors
-   * @param {Vector2} v - Second vector
-   */
-  dot(v) {
-    return (this.x * v.x) + (this.y * v.y)
-  }
+    /**
+     * Subtraction of a vector from the current vector.
+     * @param {Vector2} v - The second vector.
+     */
+    sub(v) {
+        this.x -= v.x
+        this.y -= v.y
+    }
 
-  /**
-   * Addition of 2 vectors
-   * @param {Vector2} v 
-   */
-  add(v) {
-    this.x += v.x
-    this.y += v.y
-  }
+    /**
+     * Scalar multiplication. Multiplies a vector by a scalar.
+     * @param {Number} a - The scalar value.
+     */
+    scalar(a) {
+        this.x *= a
+        this.y *= a
+    }
 
-  /**
-   * Subtraction of 2 vectors
-   * @param {Vector2} v 
-   */
-  sub(v) {
-    this.x -= v.x
-    this.y -= v.y
-  }
+    /**
+     * Calculate the dot product of the current vector and another vector.
+     * @param {Vector2} v - The second vector.
+     * @return {Number} the dot product of the wzo
+     */
+    dot(v) {
+        return this.x * v.x + this.y * v.y
+    }
 
-  /**
-   * Scalar multiplication
-   * @param {Number} a 
-   */
-  scalar(a) {
-    this.x *= a
-    this.y *= a
-  }
-
-  /**
-   * Rotate vector around origin
-   * @param {Number} α - Anticlockwise angle (degrees)
-   */
-  rot(α) {
-    const m = new Matrix2([this.x, 0, this.y, 0])
-    m.rot(α)
-    console.log(m)
-    this.x = m.items[0]
-    this.y = m.items[2]
-  }
+    /**
+     * Rotate the vector around the origin.
+     * @param {Number} α - The anticlockwise angle in degrees.
+     */
+    rot(α) {
+        const m = new Matrix2([this.x, 0, this.y, 0])
+        m.rot(α)
+        this.x = m.elements[0]
+        this.y = m.elements[2]
+    }
 }
