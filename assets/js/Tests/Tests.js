@@ -1,4 +1,4 @@
-import TestMatrix2 from './Library/Math/TestMatrix2.js'
+import TestMatrix2 from './library/Math/TestMatrix2.js'
 
 /** Class to run tests. */
 export default class Tests {
