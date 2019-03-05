@@ -1,4 +1,4 @@
-import Matrix2 from '../../../Library/Math/Matrix2.js'
+import Matrix2 from '../../../library/Math/Matrix2.js'
 import TestMatrix from './TestMatrix.js'
 
 /** Class for testing the Matrix2 class. */
