@@ -19,35 +19,35 @@ export default class Vector4 {
 
   /**
    * Addition of 2 vectors
-   * @param {Vector4} v - Second vector
+   * @param {Vector4} secondVector - Second vector
    */
-  add(v) {
-    this.x += v.x
-    this.y += v.y
-    this.z += v.z
-    this.w += v.w
+  add(secondVector) {
+    this.x += secondVector.x
+    this.y += secondVector.y
+    this.z += secondVector.z
+    this.w += secondVector.w
   }
 
   /**
    * Subtraction of two vectors
-   * @param {Vector4} v - Second vector
+   * @param {Vector4} secondVector - Second vector
    */
-  sub(v) {
-    this.x -= v.x
-    this.y -= v.y
-    this.z -= v.z
-    this.w -= v.w
+  sub(secondVector) {
+    this.x -= secondVector.x
+    this.y -= secondVector.y
+    this.z -= secondVector.z
+    this.w -= secondVector.w
   }
 
   /**
    * Scalar multiplication
-   * @param {Number} a - Number to multiply by
+   * @param {Number} scale - Number to multiply by
    */
-  scalar(a) {
-    this.x *= a
-    this.y *= a
-    this.z *= a
-    this.w *= a
+  scalar(scale) {
+    this.x *= scale
+    this.y *= scale
+    this.z *= scale
+    this.w *= scale
   }
 
   /**
@@ -59,10 +59,10 @@ export default class Vector4 {
 
   /**
    * Dot multiplication?
-   * @param {Vector4} v - Second vector
+   * @param {Vector4} secondVector - Second vector
    */
-  dot(v) {
-    return (this.x * v.x) + (this.y * v.y) + (this.z * v.z) + (this.w * v.w)
+  dot(secondVector) {
+    return (this.x * secondVector.x) + (this.y * secondVector.y) + (this.z * secondVector.z) + (this.w * secondVector.w)
   }
 
   /**
@@ -70,17 +70,17 @@ export default class Vector4 {
    * @param {Number} α - Anticlockwise angle (degrees)
    */
   rot(α) {
-    const m = new Matrix4([
+    const matrix = new Matrix4([
       this.x, 0, 0, 0,
       this.y, 0, 0, 0,
       this.z, 0, 0, 0,
       this.w, 0, 0, 0,
     ])
-    m.rot(α)
-    console.log(m)
-    this.x = m.items[0]
-    this.y = m.items[4]
-    this.z = m.items[8]
-    this.w = m.items[12]
+    matrix.rot(α)
+    console.log(matrix)
+    this.x = matrix.items[0]
+    this.y = matrix.items[4]
+    this.z = matrix.items[8]
+    this.w = matrix.items[12]
   }
 }

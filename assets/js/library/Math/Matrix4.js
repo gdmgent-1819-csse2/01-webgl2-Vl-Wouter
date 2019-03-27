@@ -15,59 +15,59 @@ export default class Matrix4 {
 
   /**
    * Addition of two matrix
-   * @param {Matrix4} b - Second matrix
+   * @param {Matrix4} secondMatrix - Second matrix
    */
-  add(b) {
-    const a = this.items
+  add(secondMatrix) {
+    const firstMatrix = this.items
     this.items = [
-      (a[0] + b[0]), (a[1] + b[1]), (a[2] + b[2]), (a[3] + b[3]),
-      (a[4] + b[4]), (a[5] + b[5]), (a[6] + b[6]), (a[7] + b[7]),
-      (a[8] + b[8]), (a[9] + b[9]), (a[10] + b[10]), (a[11] + b[11]),
-      (a[12] + b[12]), (a[13] + b[13]), (a[14] + b[14]), (a[15] + b[15]),
+      (firstMatrix[0] + secondMatrix[0]), (firstMatrix[1] + secondMatrix[1]), (firstMatrix[2] + secondMatrix[2]), (firstMatrix[3] + secondMatrix[3]),
+      (firstMatrix[4] + secondMatrix[4]), (firstMatrix[5] + secondMatrix[5]), (firstMatrix[6] + secondMatrix[6]), (firstMatrix[7] + secondMatrix[7]),
+      (firstMatrix[8] + secondMatrix[8]), (firstMatrix[9] + secondMatrix[9]), (firstMatrix[10] + secondMatrix[10]), (firstMatrix[11] + secondMatrix[11]),
+      (firstMatrix[12] + secondMatrix[12]), (firstMatrix[13] + secondMatrix[13]), (firstMatrix[14] + secondMatrix[14]), (firstMatrix[15] + secondMatrix[15]),
     ]
   }
 
   /**
    * Subtraction of two matrix
-   * @param {Matrix4} b - Second matrix
+   * @param {Matrix4} secondMatrix - Second matrix
    */
-  sub(b) {
-    const a = this.items
+  sub(secondMatrix) {
+    const firstMatrix = this.items
 
     this.items = [
-      (a[0] - b[0]), (a[1] - b[1]), (a[2] - b[2]), (a[3] - b[3]),
-      (a[4] - b[4]), (a[5] - b[5]), (a[6] - b[6]), (a[7] - b[7]),
-      (a[8] - b[8]), (a[9] - b[9]), (a[10] - b[10]), (a[11] - b[11]),
-      (a[12] - b[12]), (a[13] - b[13]), (a[14] - b[14]), (a[15] - b[15]),
+      (firstMatrix[0] - secondMatrix[0]), (firstMatrix[1] - secondMatrix[1]), (firstMatrix[2] - secondMatrix[2]), (firstMatrix[3] - secondMatrix[3]),
+      (firstMatrix[4] - secondMatrix[4]), (firstMatrix[5] - secondMatrix[5]), (firstMatrix[6] - secondMatrix[6]), (firstMatrix[7] - secondMatrix[7]),
+      (firstMatrix[8] - secondMatrix[8]), (firstMatrix[9] - secondMatrix[9]), (firstMatrix[10] - secondMatrix[10]), (firstMatrix[11] - secondMatrix[11]),
+      (firstMatrix[12] - secondMatrix[12]), (firstMatrix[13] - secondMatrix[13]), (firstMatrix[14] - secondMatrix[14]), (firstMatrix[15] - secondMatrix[15]),
     ]
   }
 
   /**
    * Multiplication matrix
-   * @param {Matrix4} b - Second matrix
+   * @param {Matrix4} secondMatrix - Second matrix
    */
-  mul(b) {
-    const a = this.items
+  mul(secondMatrix) {
+    const firstMatrix = this.items
 
-    const res0_0 = (a[0] * b[0]) + (a[1] * b[4]) + (a[2] * b[8]) + (a[3] * b[12])
-    const res0_1 = (a[0] * b[1]) + (a[1] * b[5]) + (a[2] * b[9]) + (a[3] * b[13])
-    const res0_2 = (a[0] * b[2]) + (a[1] * b[6]) + (a[2] * b[10]) + (a[3] * b[14])
-    const res0_3 = (a[0] * b[3]) + (a[1] * b[7]) + (a[2] * b[11]) + (a[3] * b[15])
+    const res0_0 = (firstMatrix[0] * secondMatrix[0]) + (firstMatrix[1] * secondMatrix[4]) + (firstMatrix[2] * secondMatrix[8]) + (firstMatrix[3] * secondMatrix[12])
+    const res0_1 = (firstMatrix[0] * secondMatrix[1]) + (firstMatrix[1] * secondMatrix[5]) + (firstMatrix[2] * secondMatrix[9]) + (firstMatrix[3] * secondMatrix[13])
+    const res0_2 = (firstMatrix[0] * secondMatrix[2]) + (firstMatrix[1] * secondMatrix[6]) + (firstMatrix[2] * secondMatrix[10]) + (firstMatrix[3] * secondMatrix[14])
+    const res0_3 = (firstMatrix[0] * secondMatrix[3]) + (firstMatrix[1] * secondMatrix[7]) + (firstMatrix[2] * secondMatrix[11]) + (firstMatrix[3] * secondMatrix[15])
 
-    const res1_0 = (a[4] * b[0]) + (a[5] * b[4]) + (a[6] * b[8]) + (a[7] * b[12])
-    const res1_1 = (a[4] * b[1]) + (a[5] * b[5]) + (a[6] * b[9]) + (a[7] * b[13])
-    const res1_2 = (a[4] * b[2]) + (a[5] * b[6]) + (a[6] * b[10]) + (a[7] * b[14])
-    const res1_3 = (a[4] * b[3]) + (a[5] * b[7]) + (a[6] * b[11]) + (a[7] * b[15])
+    const res1_0 = (firstMatrix[4] * secondMatrix[0]) + (firstMatrix[5] * secondMatrix[4]) + (firstMatrix[6] * secondMatrix[8]) + (firstMatrix[7] * secondMatrix[12])
+    const res1_1 = (firstMatrix[4] * secondMatrix[1]) + (firstMatrix[5] * secondMatrix[5]) + (firstMatrix[6] * secondMatrix[9]) + (firstMatrix[7] * secondMatrix[13])
+    const res1_2 = (firstMatrix[4] * secondMatrix[2]) + (firstMatrix[5] * secondMatrix[6]) + (firstMatrix[6] * secondMatrix[10]) + (firstMatrix[7] * secondMatrix[14])
+    const res1_3 = (firstMatrix[4] * secondMatrix[3]) + (firstMatrix[5] * secondMatrix[7]) + (firstMatrix[6] * secondMatrix[11]) + (firstMatrix[7] * secondMatrix[15])
 
-    const res2_0 = (a[8] * b[0]) + (a[9] * b[4]) + (a[10] * b[8]) + (a[11] * b[12])
-    const res2_1 = (a[8] * b[1]) + (a[9] * b[5]) + (a[10] * b[9]) + (a[11] * b[13])
-    const res2_2 = (a[8] * b[2]) + (a[9] * b[6]) + (a[10] * b[10]) + (a[11] * b[14])
-    const res2_3 = (a[8] * b[3]) + (a[9] * b[7]) + (a[10] * b[11]) + (a[11] * b[15])
+    const res2_0 = (firstMatrix[8] * secondMatrix[0]) + (firstMatrix[9] * secondMatrix[4]) + (firstMatrix[10] * secondMatrix[8]) + (firstMatrix[11] * secondMatrix[12])
+    const res2_1 = (firstMatrix[8] * secondMatrix[1]) + (firstMatrix[9] * secondMatrix[5]) + (firstMatrix[10] * secondMatrix[9]) + (firstMatrix[11] * secondMatrix[13])
+    const res2_2 = (firstMatrix[8] * secondMatrix[2]) + (firstMatrix[9] * secondMatrix[6]) + (firstMatrix[10] * secondMatrix[10]) + (firstMatrix[11] * secondMatrix[14])
+    const res2_3 = (firstMatrix[8] * secondMatrix[3]) + (firstMatrix[9] * secondMatrix[7]) + (firstMatrix[10] * secondMatrix[11]) + (firstMatrix[11] * secondMatrix[15])
 
-    const res3_0 = (a[12] * b[0]) + (a[13] * b[4]) + (a[14] * b[8]) + (a[15] * b[12])
-    const res3_1 = (a[12] * b[1]) + (a[13] * b[5]) + (a[14] * b[9]) + (a[15] * b[13])
-    const res3_2 = (a[12] * b[2]) + (a[13] * b[6]) + (a[14] * b[10]) + (a[15] * b[14])
-    const res3_3 = (a[12] * b[3]) + (a[13] * b[7]) + (a[14] * b[11]) + (a[15] * b[15])
+    const res3_0 = (firstMatrix[12] * secondMatrix[0]) + (firstMatrix[13] * secondMatrix[4]) + (firstMatrix[14] * secondMatrix[8]) + (firstMatrix[15] * secondMatrix[12])
+    const res3_1 = (firstMatrix[12] * secondMatrix[1]) + (firstMatrix[13] * secondMatrix[5]) + (firstMatrix[14] * secondMatrix[9]) + (firstMatrix[15] * secondMatrix[13])
+    const res3_2 = (firstMatrix[12] * secondMatrix[2]) + (firstMatrix[13] * secondMatrix[6]) + (firstMatrix[14] * secondMatrix[10]) + (firstMatrix[15] * secondMatrix[14])
+    const res3_3 = (firstMatrix[12] * secondMatrix[3]) + (firstMatrix[13] * secondMatrix[7]) + (firstMatrix[14] * secondMatrix[11]) + (firstMatrix[15] * secondMatrix[15])
 
     this.items = [
       res0_0, res0_1, res0_2, res0_3,
@@ -85,7 +85,6 @@ export default class Matrix4 {
     α *= Math.PI / 180
     const cos = Math.cos(α)
     const sin = Math.sin(α)
-    const a = this.items
     const r = [
       cos, -sin, 0, 0,
       sin, cos, 0, 0,

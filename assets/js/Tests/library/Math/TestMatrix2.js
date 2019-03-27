@@ -22,11 +22,11 @@ export default class TestMatrix2 extends TestMatrix {
      */
     testAdd() {
         console.info('test Matrix2.add()')
-        const a = [
+        const originalMatrix = [
             1, 2,
             3, 4,
         ]
-        const b = [
+        const secondMatrix = [
             5, 6,
             7, 8,
         ]
@@ -34,8 +34,8 @@ export default class TestMatrix2 extends TestMatrix {
             6, 8,
             10, 12,
         ]
-        const m = new Matrix2(a)
-        m.add(b)
+        const m = new Matrix2(originalMatrix)
+        m.add(secondMatrix)
         const actual = m.elements
         this.assertIdentical(actual, expected)
     }
@@ -45,11 +45,11 @@ export default class TestMatrix2 extends TestMatrix {
      */
     testSub() {
         console.info('test Matrix2.sub()')
-        const a = [
+        const firstMatrix = [
             1, 2,
             3, 4,
         ]
-        const b = [
+        const secondMatrix = [
             9, 8,
             7, 6,
         ]
@@ -57,8 +57,8 @@ export default class TestMatrix2 extends TestMatrix {
             -8, -6,
             -4, -2,
         ]
-        const m = new Matrix2(a)
-        m.sub(b)
+        const m = new Matrix2(firstMatrix)
+        m.sub(secondMatrix)
         const actual = m.elements
         this.assertIdentical(actual, expected)
     }
@@ -68,11 +68,11 @@ export default class TestMatrix2 extends TestMatrix {
      */
     testMul() {
         console.info('test Matrix2.mul()')
-        const a = [
+        const firstMatrix = [
             1, 2,
             3, 4,
         ]
-        const b = [
+        const secondMatrix = [
             2, -1,
             -1, 2,
         ]
@@ -80,8 +80,8 @@ export default class TestMatrix2 extends TestMatrix {
             0, 3,
             2, 5,
         ]
-        const m = new Matrix2(a)
-        m.mul(b)
+        const m = new Matrix2(firstMatrix)
+        m.mul(secondMatrix)
         const actual = m.elements
         this.assertIdentical(actual, expected)
     }
@@ -91,7 +91,7 @@ export default class TestMatrix2 extends TestMatrix {
      */
     testMulIdentity() {
         console.info('test Matrix2.mul() by identity matrix')
-        const a = [
+        const firstMatrix = [
             1, 2,
             3, 4,
         ]
@@ -103,7 +103,7 @@ export default class TestMatrix2 extends TestMatrix {
             1, 2,
             3, 4,
         ]
-        const m = new Matrix2(a)
+        const m = new Matrix2(firstMatrix)
         m.mul(i)
         const actual = m.elements
         this.assertIdentical(actual, expected)
@@ -115,7 +115,7 @@ export default class TestMatrix2 extends TestMatrix {
     testRot() {
         console.info('test Matrix2.rot()')
         const α = 90
-        const a = [
+        const firstMatrix = [
             3, 0,
             1, 0,
         ]
@@ -123,7 +123,7 @@ export default class TestMatrix2 extends TestMatrix {
             -1, 0,
             3, 0,
         ]
-        const m = new Matrix2(a)
+        const m = new Matrix2(firstMatrix)
         m.rot(α)
         const actual = m.elements
         this.assertIdenticalRounded(actual, expected)

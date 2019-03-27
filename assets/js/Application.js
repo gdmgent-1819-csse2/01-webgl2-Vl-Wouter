@@ -20,6 +20,9 @@ export default class Application {
         this.preloader()
     }
 
+		/**
+		 * Load all necessary assets to make the application run
+		 */
     async preloader() {
         console.info('Preloading source code for shaders')
         await fetch('./assets/glsl/vertex-shader.glsl')
@@ -33,6 +36,9 @@ export default class Application {
         this.run()
     }
 
+		/**
+		 * Run the application in a defined area
+		 */
     run() {
         const width = 600
         const height = 600

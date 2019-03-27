@@ -13,39 +13,39 @@ export default class Matrix2 {
 
     /**
      * Addition of a matrix to the current matrix.
-     * @param {Array} b - The second matrix.
+     * @param {Array} secondMatrix - The second matrix.
      */
-    add(b) {
-        const a = this.elements
+    add(secondMatrix) {
+        const firstMatrix = this.elements
         this.elements = [
-            a[0] + b[0], a[1] + b[1],
-            a[2] + b[2], a[3] + b[3],
+            firstMatrix[0] + secondMatrix[0], firstMatrix[1] + secondMatrix[1],
+            firstMatrix[2] + secondMatrix[2], firstMatrix[3] + secondMatrix[3],
         ]
     }
 
     /**
      * Subtraction of a matrix from the current matrix.
-     * @param {Array} b - The second matrix.
+     * @param {Array} secondMatrix - The second matrix.
      */
-    sub(b) {
-        const a = this.elements
+    sub(secondMatrix) {
+        const firstMatrix = this.elements
         this.elements = [
-            a[0] - b[0], a[1] - b[1],
-            a[2] - b[2], a[3] - b[3],
+            firstMatrix[0] - secondMatrix[0], firstMatrix[1] - secondMatrix[1],
+            firstMatrix[2] - secondMatrix[2], firstMatrix[3] - secondMatrix[3],
         ]
     }
 
     /**
      * Multiplication of the current matrix by another matrix.
-     * @param {Array} b - The second matrix.
+     * @param {Array} secondMatrix - The second matrix.
      */
-    mul(b) {
-        const a = this.elements
+    mul(secondMatrix) {
+        const firstMatrix = this.elements
         const c = []
-        c[0] = a[0] * b[0] + a[1] * b[2]
-        c[1] = a[0] * b[1] + a[1] * b[3]
-        c[2] = a[2] * b[0] + a[3] * b[2]
-        c[3] = a[2] * b[1] + a[3] * b[3]
+        c[0] = firstMatrix[0] * secondMatrix[0] + firstMatrix[1] * secondMatrix[2]
+        c[1] = firstMatrix[0] * secondMatrix[1] + firstMatrix[1] * secondMatrix[3]
+        c[2] = firstMatrix[2] * secondMatrix[0] + firstMatrix[3] * secondMatrix[2]
+        c[3] = firstMatrix[2] * secondMatrix[1] + firstMatrix[3] * secondMatrix[3]
 
         this.elements = c
     }
@@ -58,12 +58,12 @@ export default class Matrix2 {
         α *= Math.PI / 180
         const cos = Math.cos(α)
         const sin = Math.sin(α)
-        const a = this.elements
+        const firstMatrix = this.elements
         const r = [
             cos, -sin,
             sin, cos,
         ]
         this.elements = r
-        this.mul(a);
+        this.mul(firstMatrix);
     }
 }

@@ -24,14 +24,14 @@ export default class TestVector2 extends TestMatrix {
    */
   testAdd() {
     console.info("Test: Vector2.add()")
-    const a = new Vector2(1.5, 2.5)
+    const firstVector = new Vector2(1.5, 2.5)
 
-    const b = new Vector2(3, 4)
+    const secondVector = new Vector2(3, 4)
 
     const expected = [4.5, 6.5]
 
-    a.add(b)
-    const actual = [a.x, a.y]
+    firstVector.add(secondVector)
+    const actual = [firstVector.x, firstVector.y]
     this.assertIdentical(actual, expected)
   }
 
@@ -40,14 +40,14 @@ export default class TestVector2 extends TestMatrix {
    */
   testSub() {
     console.info("Test: Vector2.sub()")
-    const a = new Vector2(2, 4)
+    const firstVector = new Vector2(2, 4)
 
-    const b = new Vector2(4, 7)
+    const secondVector = new Vector2(4, 7)
 
     const expected = [-2, -3]
 
-    a.sub(b)
-    const actual = [a.x, a.y]
+    firstVector.sub(secondVector)
+    const actual = [firstVector.x, firstVector.y]
     this.assertIdentical(actual, expected)
   }
 
@@ -56,14 +56,14 @@ export default class TestVector2 extends TestMatrix {
    */
   testScalar() {
     console.info("Test: Vector2.scalar()")
-    const a = new Vector2(1, 2)
+    const firstVector = new Vector2(1, 2)
 
     const s = 4
 
     const expected = [4, 8]
 
-    a.scalar(s)
-    const actual = [a.x, a.y]
+    firstVector.scalar(s)
+    const actual = [firstVector.x, firstVector.y]
     this.assertIdentical(actual, expected)
   }
 
@@ -72,11 +72,11 @@ export default class TestVector2 extends TestMatrix {
    */
   testNorm() {
     console.info("Test: Vector2.norm()")
-    const a = new Vector2(3, 2)
+    const firstVector = new Vector2(3, 2)
 
     const expected = [4]
 
-    const actual = [a.norm()]
+    const actual = [firstVector.norm()]
     this.assertIdenticalRounded(actual, expected)
   }
 
@@ -85,26 +85,26 @@ export default class TestVector2 extends TestMatrix {
    */
   testDot() {
     console.info("Test: Vector2.dot()")
-    const a = new Vector2(4, 5)
+    const firstVector = new Vector2(4, 5)
 
-    const b = new Vector2(3, 6)
+    const secondVector = new Vector2(3, 6)
 
     const expected = [42]
 
-    const actual = [a.dot(b)]
+    const actual = [firstVector.dot(secondVector)]
     this.assertIdentical(actual, expected)
   }
 
   testRot() {
     console.info("Test: Vector2.rot()")
-    const a = new Vector2(1, 2)
+    const firstVector = new Vector2(1, 2)
 
     const α = 180
 
     const expected = [-1, -2]
 
-    a.rot(α)
-    const actual = [a.x, a.y]
+    firstVector.rot(α)
+    const actual = [firstVector.x, firstVector.y]
     this.assertIdenticalRounded(actual, expected)
   }
 }

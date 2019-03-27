@@ -36,6 +36,10 @@ export default class Canvas {
 
     }
 
+		/**
+		 * Update the canvas with new vectors
+		 * @param {*} event 
+		 */
     updateCanvasHandler(event) {
         console.log('updateCanvas')
         this.clearData()
@@ -44,24 +48,16 @@ export default class Canvas {
         this.data.positions.push(0, 0)
         this.data.colors.push(...this.colors.white)
 
-        const v = new Vector2(.5, 0)
-        this.data.positions.push(v.x, v.y)
+        const vector = new Vector2(.5, 0)
+        this.data.positions.push(vector.x, vector.y)
         this.data.colors.push(...this.colors.red)
 
         const slots = 12;
         const now = new Date()
 
-        const colors = [
-            'green',
-            'blue',
-            'cyan',
-            'magenta',
-            'yellow',
-        ]
-
         for(let i = 0; i < slots; i++) {
-          v.rot(30)
-          this.data.positions.push(v.x,v.y)
+          vector.rot(30)
+          this.data.positions.push(vector.x,vector.y)
           this.data.colors.push(...this.colors['blue'])
         }
 
@@ -80,17 +76,12 @@ export default class Canvas {
         this.data.positions.push(hours.x, hours.y)
         this.data.colors.push(...this.colors['magenta'])
 
-        // colors.forEach(color => {
-        //     v.rot(45)
-        //     this.data.positions.push(v.x, v.y)
-        //     this.data.colors.push(...this.colors[color])
-        // });
-
-
-
         this.drawScene()
     }
 
+		/**
+		 * Run all necessary code for the current application
+		 */
     run() {
         try {
             this.createCanvas()
@@ -115,6 +106,9 @@ export default class Canvas {
         }
     }
 
+		/**
+		 * clear all data from the color and position buffers
+		 */
     clearData() {
         this.data = {
             colors: [],
@@ -122,11 +116,18 @@ export default class Canvas {
         }
     }
 
+		/**
+		 * Create the color and position buffers
+		 */
     createBuffers() {
         this.createBuffer('COLOR')
         this.createBuffer('POSITION')
     }
 
+		/**
+		 * Create a buffer of the specified type
+		 * @param {string} bufferType 
+		 */
     createBuffer(bufferType) {
         const gl = this.gl
         const program = this.program
@@ -165,8 +166,11 @@ export default class Canvas {
         const index = gl.getAttribLocation(program, name)
         gl.enableVertexAttribArray(index)
         gl.vertexAttribPointer(index, size, type, normalized, stride, offset) // @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/vertexAttribPointer
-    }
-
+		}
+		
+		/**
+		 * Create a canvas
+		 */
     createCanvas() {
         const canvas = document.createElement('canvas')
         document.body.appendChild(canvas)
@@ -177,6 +181,9 @@ export default class Canvas {
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height) // @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/viewport
     }
 
+		/**
+		 * Create a program with the correct shaders
+		 */
     createProgram() {
         const gl = this.gl
 
@@ -195,6 +202,9 @@ export default class Canvas {
         }
     }
 
+		/**
+		 * Create shaders to run the program
+		 */
     createShaders() {
         const gl = this.gl
 
@@ -202,6 +212,10 @@ export default class Canvas {
         this.fragmentShader = this.createShader(gl.FRAGMENT_SHADER)
     }
 
+		/**
+		 * Create a specified shader
+		 * @param {*} type 
+		 */
     createShader(type) {
         const gl = this.gl
 
@@ -230,6 +244,9 @@ export default class Canvas {
         gl.deleteShader(shader)
     }
 
+		/**
+		 * Create a vertexArray
+		 */
     createVertexArray() {
         const gl = this.gl
 
@@ -237,6 +254,9 @@ export default class Canvas {
         gl.bindVertexArray(vertexArray)
     }
 
+		/**
+		 * draw the current scene
+		 */
     drawScene() {
         const gl = this.gl
 

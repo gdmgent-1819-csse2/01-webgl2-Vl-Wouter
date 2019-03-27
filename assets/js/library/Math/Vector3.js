@@ -5,7 +5,7 @@ import Matrix3 from './Matrix3.js'
 export default class Vector3 {
 
   /**
-   * Create a three dimensional vector
+   * Create scale three dimensional vector
    * @param {Number} xpos - position on X-axis
    * @param {Number} ypos - position on Y-axis
    * @param {Number} zpos - position on Z-axis
@@ -18,32 +18,32 @@ export default class Vector3 {
 
   /**
    * Addition of 2 vectors
-   * @param {Vector3} v - Second vector
+   * @param {Vector3} secondVector - Second vector
    */
-  add(v) {
-    this.x += v.x
-    this.y += v.y
-    this.z += v.z
+  add(secondVector) {
+    this.x += secondVector.x
+    this.y += secondVector.y
+    this.z += secondVector.z
   }
 
   /**
    * Subtraction of 2 vectors
-   * @param {Vector3} v - Second vector
+   * @param {Vector3} secondVector - Second vector
    */
-  sub(v) {
-    this.x -= v.x
-    this.y -= v.y
-    this.z -= v.z
+  sub(secondVector) {
+    this.x -= secondVector.x
+    this.y -= secondVector.y
+    this.z -= secondVector.z
   }
 
   /**
    * Scalar multiplication
-   * @param {Number} a - Number to multiply by
+   * @param {Number} scale - Number to multiply by
    */
-  scalar(a) {
-    this.x *= a
-    this.y *= a
-    this.z *= a
+  scalar(scale) {
+    this.x *= scale
+    this.y *= scale
+    this.z *= scale
   }
 
   /**
@@ -55,10 +55,10 @@ export default class Vector3 {
 
   /**
    * Dot product of two vectors
-   * @param {Vector2} v - Second vector
+   * @param {Vector2} secondVector - Second vector
    */
-  dot(v) {
-    return (this.x * v.x) + (this.y * v.y) + (this.z * v.z)
+  dot(secondVector) {
+    return (this.x * secondVector.x) + (this.y * secondVector.y) + (this.z * secondVector.z)
   }
 
   /**
@@ -66,15 +66,15 @@ export default class Vector3 {
    * @param {Number} α - Anticlockwise angle (degrees)
    */
   rot(α) {
-    const m = new Matrix3([
+    const matrix = new Matrix3([
       this.x, 0, 0,
       this.y, 0, 0,
       this.z, 0, 0
     ])
-    m.rot(α)
-    console.log(m)
-    this.x = m.items[0]
-    this.y = m.items[3]
-    this.z = m.items[6]
+    matrix.rot(α)
+    console.log(matrix)
+    this.x = matrix.items[0]
+    this.y = matrix.items[3]
+    this.z = matrix.items[6]
   }
 }
